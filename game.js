@@ -4,7 +4,7 @@ let game = {
     init() {
         if (confirm("Привет.\n" +
             "Вас приветствует игра Кто Хочет Стать Миллионером.\n" +
-            "Нажмите ENTER или OK и погрузитесь в увлекательний мир загадок.")) {
+            "Нажмите OK и погрузитесь в увлекательний мир загадок.")) {
             game.run();
         } else {
             alert("Вы упустили шанс стать миллионером.");
@@ -19,7 +19,7 @@ let game = {
     },
 
     checkPrompt(param, count) {
-        const currentAnswer = Number(prompt(param));
+        const currentAnswer = Number(prompt(param, "Для завершения нажмите ОТМЕНА."));
 
         if(currentAnswer === 0){
             alert("Вы упустили шанс стать миллионером.");
@@ -47,26 +47,31 @@ let game = {
             "Количество правильных ответов = " + countRightAnswers);
         }
 
-/*        while(count === 4) {
+        while(count === 4) {
             game.end();
-        }*/
+        }
     },
 
-/*    end() {
+    end() {
         if(countRightAnswers === 5) {
             while (
                 confirm("ПОЗДРАВЛЯЮ ВЫ ВЫИГРАЛИ 1 000 000 $.\n" +
-                    "ПРОВЕРЬТЕ ПОЖАЛУЙСТА ВАШ БАНКОВСКИЙ СЧЕТ !!!")) {
+                    "ПРОВЕРЬТЕ ПОЖАЛУЙСТА ВАШ БАНКОВСКИЙ СЧЕТ !!!\n" +
+                "\n" +
+                    "Сыграем ещё ?")) {
                 count = 0;
+                countRightAnswers = 0;
                 game.run();
             }
         } else {
             while (confirm("Сыграем ещё ?")) {
                 count = 0;
+                countRightAnswers = 0;
                 game.run();
             }
         }
-    }*/
+        throw new Error("Пользователь становил игру.");
+    }
 
 
 };

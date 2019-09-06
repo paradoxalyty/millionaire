@@ -1,3 +1,5 @@
-let rightAnswers = [1, 3, 4, 1, 3];
+let rightAnswers = [1, 3, 4, 1, 3]; // правильные ответы
 
-let countRightAnswers = 0;
+let count = 0; // считает количество отвеченных вопросов
+
+let countRightAnswers = 0; // считает количество правильно отвеченных вопросов
