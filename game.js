@@ -16,11 +16,14 @@ let game = {
     // а также считает количество переданных вопросов.
     run() {
         for (const prop in questions) {
-            game.checkPrompt(questions[prop], count);
             count++;
+            game.checkPrompt(questions[prop], count);
         }
     },
 
+    // Этот метод задает пользователю вопрос.
+    // Если пользователь ввел правильные данные, вызывает следующий метод
+    // передавая ему в качестве параметров текущий ответ и счетчик ответов.
     checkPrompt(param) {
         const currentAnswer = Number(prompt(param, "O"));
         const availableAnswers = [1, 2, 3, 4];
@@ -36,9 +39,10 @@ let game = {
         }
     },
 
+    // Этот метод сравнивает текущий ответ с правильным ответом.
+    // Если счетчик ответов равен 5, вызывает метод остановки игры.
     compare(currentAnswer, count) {
-
-        if(currentAnswer === rightAnswers[count]) {
+        if(currentAnswer === rightAnswers[count-1]) {
             countRightAnswers++;
             alert("Поздравляю вы ответили правильно!!! \n" +
             "Количество правильных ответов = " + countRightAnswers);
@@ -47,11 +51,13 @@ let game = {
             "Количество правильных ответов = " + countRightAnswers);
         }
 
-        while(count === 4) {
+        while(count === 5) {
             game.end();
         }
     },
 
+    // Этот метод предлагает сыграть еще раз.
+    // Если ответ положительный, обнуляет счетчики и вызывает метод начала игры.
     end() {
         if(countRightAnswers === 5) {
             while (
@@ -64,7 +70,9 @@ let game = {
                 game.run();
             }
         } else {
-            while (confirm("Сыграем ещё ?")) {
+            while (confirm("Вы ответили правильно на " + countRightAnswers + " вопроса.\n" +
+                "\n" +
+                "Сыграем ещё ?")) {
                 count = 0;
                 countRightAnswers = 0;
                 game.run();
