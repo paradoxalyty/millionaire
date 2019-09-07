@@ -1,6 +1,6 @@
 let game = {
 
-    // Этот метод выполняется при открытии страницы.
+    // Этот метод выполняется при открытии страницы и предлагает пользователю начать игру.
     init() {
         if (confirm("Привет.\n" +
             "Вас приветствует игра Кто Хочет Стать Миллионером.\n" +
@@ -11,6 +11,9 @@ let game = {
         }
     },
 
+    // Этот метод перебирает вопросы в цикле и на каждой итерации вызывает
+    // следующий метод передавая ему каждый раз по одному вопросу,
+    // а также считает количество переданных вопросов.
     run() {
         for (const prop in questions) {
             game.checkPrompt(questions[prop], count);
@@ -18,17 +21,14 @@ let game = {
         }
     },
 
-    checkPrompt(param, count) {
+    checkPrompt(param) {
         const currentAnswer = Number(prompt(param, "O"));
+        const availableAnswers = [1, 2, 3, 4];
 
         if(currentAnswer === 0){
             alert("Вы упустили шанс стать миллионером.");
             throw new Error("Пользователь становил игру.");
-        } else if (isNaN(currentAnswer) || !Number.isInteger(currentAnswer)) {
-            console.log(currentAnswer);
-            alert("Необходимо ввести 1, 2, 3 или 4, попробуйте ещё раз.");
-            game.checkPrompt(param);
-        } else if (currentAnswer < 0 || currentAnswer > 4) {
+        } else if (!availableAnswers.includes(currentAnswer)) {
             alert("Необходимо ввести 1, 2, 3 или 4, попробуйте ещё раз.");
             game.checkPrompt(param);
         } else {
