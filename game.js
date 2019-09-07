@@ -19,7 +19,7 @@ let game = {
     },
 
     checkPrompt(param, count) {
-        const currentAnswer = Number(prompt(param, "Для завершения нажмите ОТМЕНА."));
+        const currentAnswer = Number(prompt(param, "O"));
 
         if(currentAnswer === 0){
             alert("Вы упустили шанс стать миллионером.");
