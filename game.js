@@ -15,7 +15,7 @@ let game = {
     // следующий метод передавая ему каждый раз по одному вопросу,
     // а также считает количество переданных вопросов.
     run() {
-        for (const prop in questions) {
+            for (const prop in questions) {
             count++;
             game.checkPrompt(questions[prop], count);
         }
@@ -25,13 +25,13 @@ let game = {
     // Если пользователь ввел правильные данные, вызывает следующий метод
     // передавая ему в качестве параметров текущий ответ и счетчик ответов.
     checkPrompt(param) {
-        const currentAnswer = Number(prompt(param, "O"));
+        const currentAnswer = prompt(param);
         const availableAnswers = [1, 2, 3, 4];
 
-        if(currentAnswer === 0){
+        if(currentAnswer === null){
             alert("Вы упустили шанс стать миллионером.");
             throw new Error("Пользователь становил игру.");
-        } else if (!availableAnswers.includes(currentAnswer)) {
+        } else if (!availableAnswers.includes(Number(currentAnswer))) {
             alert("Необходимо ввести 1, 2, 3 или 4, попробуйте ещё раз.");
             game.checkPrompt(param);
         } else {
