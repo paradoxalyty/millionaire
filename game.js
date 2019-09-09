@@ -42,14 +42,14 @@ let game = {
     // Этот метод сравнивает текущий ответ с правильным ответом.
     // Если счетчик ответов равен 5, вызывает метод остановки игры.
     compare(currentAnswer, count) {
+        let result = "";
         if(currentAnswer === rightAnswers[count-1]) {
             countRightAnswers++;
-            alert("Поздравляю вы ответили правильно!!! \n" +
-            "Количество правильных ответов = " + countRightAnswers);
+            result += "Поздравляю вы ответили правильно!!! \n";
         } else {
-            alert("К сожалению вы ошиблись. \n" +
-            "Количество правильных ответов = " + countRightAnswers);
+            result += "К сожалению вы ошиблись. \n";
         }
+        alert(result + "Количество правильных ответов = " + countRightAnswers);
 
         while(count === 5) {
             game.end();
