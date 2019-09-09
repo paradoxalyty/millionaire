@@ -15,7 +15,7 @@ let game = {
     // следующий метод передавая ему каждый раз по одному вопросу,
     // а также считает количество переданных вопросов.
     run() {
-            for (const prop in questions) {
+        for (const prop in questions) {
             count++;
             game.checkPrompt(questions[prop], count);
         }
@@ -28,7 +28,7 @@ let game = {
         const currentAnswer = prompt(param);
         const availableAnswers = [1, 2, 3, 4];
 
-        if(currentAnswer === null){
+        if (currentAnswer === null) {
             alert("Вы упустили шанс стать миллионером.");
             throw new Error("Пользователь становил игру.");
         } else if (!availableAnswers.includes(Number(currentAnswer))) {
@@ -43,7 +43,7 @@ let game = {
     // Если счетчик ответов равен 5, вызывает метод остановки игры.
     compare(currentAnswer, count) {
         let result = "";
-        if(currentAnswer === rightAnswers[count-1]) {
+        if (currentAnswer === rightAnswers[count - 1]) {
             countRightAnswers++;
             result += "Поздравляю вы ответили правильно!!! \n";
         } else {
@@ -51,7 +51,7 @@ let game = {
         }
         alert(result + "Количество правильных ответов = " + countRightAnswers);
 
-        while(count === 5) {
+        while (count === 5) {
             game.end();
         }
     },
@@ -59,11 +59,11 @@ let game = {
     // Этот метод предлагает сыграть еще раз.
     // Если ответ положительный, обнуляет счетчики и вызывает метод начала игры.
     end() {
-        if(countRightAnswers === 5) {
+        if (countRightAnswers === 5) {
             while (
                 confirm("ПОЗДРАВЛЯЮ ВЫ ВЫИГРАЛИ 1 000 000 $.\n" +
                     "ПРОВЕРЬТЕ ПОЖАЛУЙСТА ВАШ БАНКОВСКИЙ СЧЕТ !!!\n" +
-                "\n" +
+                    "\n" +
                     "Сыграем ещё ?")) {
                 count = 0;
                 countRightAnswers = 0;
